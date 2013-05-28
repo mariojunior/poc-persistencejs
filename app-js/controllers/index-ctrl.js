@@ -1,13 +1,10 @@
-function IndexCtrl($scope, $location) {
-    
-	$scope.doOnlineLogin = function() {
-        console.log("On line: \n" + $scope.user.email + " - " + $scope.user.password);
-        $location.path("/online");
-    }
+function IndexCtrl($scope, $rootScope, $location) {
 
     $scope.doOfflineLogin = function() {
-        console.log("Off line: \n" + $scope.user.email + " - " + $scope.user.password);
-        $location.path("/offline");
+    	$rootScope.user = $scope.user;
+        console.log("Off line: \n" + $rootScope.user.email + " - " + $rootScope.user.password);
+        $rootScope.logged = true;
+        $location.path("/offline/artists/");
 	}
 
 };

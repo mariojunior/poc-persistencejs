@@ -1,10 +1,9 @@
-angular.module('mariojunior.ui', [])
+angular.module('ui.component', [])
   .directive("starRating", function ($compile) {
       function createStarList(title, rateMessage, value, max) {
         templ = "<div>" + title + "<b></b></div>\n" +
                 "<ul>\n";
-
-        // for (var i = 1; i < (parseInt(max) + 1); i++) {
+        
         for (var i = parseInt(max); i > 0; i--) {
             msg = formatMessage(rateMessage, i);
             templ += "<li><a href=\"#\" ng-click=\"value=" +i+ "\"><span>" + msg + "</span>" + ((i == value) ? "<b></b>" : '')+ "</a></li>"

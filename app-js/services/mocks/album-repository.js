@@ -1,4 +1,4 @@
-angular.module('albums',[]).factory('Albums',
+angular.module('album-repository',[]).factory('AlbumRepository',
   function(){
     
     var albums = [
@@ -37,13 +37,13 @@ angular.module('albums',[]).factory('Albums',
       
     ];
 
-    var AlbumsProvider=function(){};
+    var AlbumRepository=function(){};
 
-    AlbumsProvider.prototype.query = function(params, cb) {
+    AlbumRepository.prototype.query = function(params, cb) {
         return cb(albums);
     }
     
-    AlbumsProvider.prototype.get = function(params,cb) {
+    AlbumRepository.prototype.get = function(params,cb) {
       var result = null;
 
       for (var i = albums.length - 1; i >= 0; i--) {
@@ -57,6 +57,6 @@ angular.module('albums',[]).factory('Albums',
     }
 
     //factory's return
-    return new AlbumsProvider();
+    return new AlbumRepository();
   }
 );

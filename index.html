@@ -9,7 +9,7 @@
         <link href="css/rating-star.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body ng-controller="MainCtrl">
         <!-- HEADER-->
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner" style="padding-left: 10px">
@@ -17,7 +17,31 @@
                     <div class="span8">
                         <h1 class="font-white title"><a href="http://persistencejs.org" target="_blank">PersistenceJS</a> POC (proof of concept)</h1>
                     </div>
-                </div> 
+                    <div id="userLoggedBox" class="pull-right" style="display:none; margin:15px;" ng-show="logged">
+                        <span class="user-data">
+                            <i class="icon-user icon-large"></i>
+                            <span>Welcome <strong>{{user.email}}</strong>!</span>
+                            <br />
+                            <span class="pull-right"><a href="#" ng-click="logoutIndex()">Sair</a></span>
+                        </span>
+                    </div>
+                </div>
+                <!-- SUBMENU -->
+                <div style="display:none; padding-left: 15px;" ng-show="logged">
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li ng-class="{'active': amIatRoute('/artists')}">
+                                <a href="#/offline/artists">Artists</a>
+                            </li>
+                            <li ng-class="{'active': amIatRoute('/albums')}">
+                                <a href="#/offline/albums">Albums</a>
+                            </li>
+                            <li ng-class="{'active': amIatRoute('/tracks')}">
+                                <a href="#/offline/tracks">Tracks</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -65,17 +89,23 @@
         <script src="app-js/app.js"></script>
 
         <!-- AngularJS App classes/dependencies -->
+        <script src="app-js/controllers/main-ctrl.js"></script>
         <script src="app-js/controllers/index-ctrl.js"></script>
-        <script src="app-js/controllers/online-ctrl.js"></script>
-        <script src="app-js/controllers/offline-ctrl.js"></script>
+        <script src="app-js/controllers/album-ctrl.js"></script>
+        <script src="app-js/controllers/artist-ctrl.js"></script>
+        <script src="app-js/controllers/track-ctrl.js"></script>
 
-        <script src="app-js/services/mocks/albums-mock.js"></script>
+        <script src="app-js/services/mocks/album-repository.js"></script>
+        <script src="app-js/services/mocks/artist-repository.js"></script>
+        <script src="app-js/services/mocks/track-repository.js"></script>
 
         <script src="app-js/directives/rating-star-directive.js"></script>
-        <!--
-        <script src="app-js/directives/some-directives.js"></script>
-        <script src="app-js/services/some-services.js"></script>
-        -->
         
+
+        <script type="text/javascript">
+            document.getElementById("userLoggedBox").style.display = "block";
+        </script>
+
+
     </body>
 </html>
