@@ -1,0 +1,30 @@
+/* 'star-rating' component 
+ * Based on: http://www.dillerdesign.com/css/cookbook/component_star_rater.html
+ * IMPORTANT: Make sure that you have a 'star_rate.gif' file on 'img' folder.
+ *
+ */
+.starRate {position:relative; margin:20px; overflow:hidden; zoom:1;}
+.starRate ul {width:160px; margin:0; padding:0;}
+.starRate li {display:inline; list-style:none;}
+.starRate a, .starRate b {background:url(../img/star_rate.gif) left top repeat-x;}
+.starRate a {float:right; margin:0 80px 0 -144px; width:80px; height:16px; background-position:left 16px; color:#000; text-decoration:none;}
+.starRate a:hover {background-position:left -32px;}
+.starRate b {position:absolute; z-index:-1; width:80px; height:16px; background-position:left -16px;}
+.starRate div b {left:0px; bottom:0px; background-position:left top;}
+.starRate a span {position:absolute; left:-300px;}
+.starRate a:hover span {left:90px; width:100%;}
+
+/* HTML Template: NOTE THAT <b></b> tags indicate the current value. 
+ *
+ * <div class="starRate">
+ * 	<div>Currently rated: 3 stars<b></b></div>
+ * 		<ul>
+ * 			<li><a href="#"><span>Give it 5 stars</span></a></li>
+ * 			<li><a href="#"><span>Give it 4 stars</span></a></li>
+ * 			<li><a href="#"><span>Give it 3 stars</span><b></b></a></li>
+ * 			<li><a href="#"><span>Give it 2 stars</span></a></li>
+ * 			<li><a href="#"><span>Give it 1 star</span></a></li>
+ * 		</ul>
+ * </div> 
+ */
+

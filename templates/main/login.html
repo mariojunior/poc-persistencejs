@@ -1,0 +1,28 @@
+<div class="span12">
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<div class="span8 offset2">
+	    <h3>Welcome!</h3>
+		<form class="well" name="loginForm">
+			<div class="input-prepend">
+		    	<span class="add-on"><i class="icon-envelope"></i></span>
+		    	<input class="span8" type="text" placeholder="Email address" name="emailField" ng-model="user.email" required>
+		    	<span ng-show="loginForm.emailField.$error.required" class="help-inline">Required</span>
+		  	</div>
+			<div class="input-prepend">
+				<span class="add-on"><i class="icon-key"></i></span>
+			    <input class="span8" type="password" placeholder="Password" name="pwdField" ng-model="user.password" required>
+			    <span ng-show="loginForm.pwdField.$error.required" class="help-inline">Required</span>
+			</div>
+			<div class="pull-right">
+				<button class="btn btn-primary" ng-click="doOnlineLogin()" ng-disabled="loginForm.$invalid">
+					<i class="icon-ok-sign"></i>&nbsp;Work On-Line
+				</button>
+				<button class="btn btn-danger" ng-click="doOfflineLogin()" ng-disabled="loginForm.$invalid">
+					<i class="icon-off"></i>&nbsp;Work Off-Line
+				</button>
+			</div>
+		</form>
+  	</div>
+</div>

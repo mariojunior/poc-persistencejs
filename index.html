@@ -1,0 +1,81 @@
+﻿<!doctype html/>
+<html ng-app="poc-persistenceJS">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="POC - PersistencsJS">
+        <title>Proof of Concept :: PersitenceJS</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/rating-star.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- HEADER-->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner" style="padding-left: 10px">
+                <div class="row-fluid">
+                    <div class="span8">
+                        <h1 class="font-white title"><a href="http://persistencejs.org" target="_blank">PersistenceJS</a> POC (proof of concept)</h1>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="container-fluid">
+            <div class="row-fluid ">
+                <div class="content" ng-view></div> <!-- NG-VIEW: where Angular templates are placed -->
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="navbar navbar-fixed-bottom">
+            <div class="navbar-inner" style="padding-left: 10px">
+                <ul class="nav font-white">
+                    <a href="https://github.com/mariojunior" target="_blank">
+                        <li>POC Developed by @mariojunior</li>
+                    </a>
+                </ul>
+                <ul class="nav font-white">
+                    <a href="https://github.com/zefhemel" target="_blank">
+                        <li>|| PersistenceJS by @zef</li>
+                    </a>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <!-- tons of JS script files.... -->
+
+        <!-- AngularJS Framework dependency -->
+        <script src="libs/angular-1.0.2.min.js"></script>
+
+        <!-- Bootstrap Javascript Components -->
+        <script src="libs/jquery-1.8.3.min.js"></script>
+        <script src="libs/bootstrap.min.js"></script>
+
+        <!-- PersistenceJS -->
+        <script src="libs/persistence.js"></script>
+        <script src="libs/persistence.store.sql.js"></script>
+        <script src="libs/persistence.store.websql.js"></script>
+
+
+        <!-- AngularJS App startup -->
+        <script src="app-js/app.js"></script>
+
+        <!-- AngularJS App classes/dependencies -->
+        <script src="app-js/controllers/index-ctrl.js"></script>
+        <script src="app-js/controllers/online-ctrl.js"></script>
+        <script src="app-js/controllers/offline-ctrl.js"></script>
+
+        <script src="app-js/services/mocks/albums-mock.js"></script>
+
+        <script src="app-js/directives/rating-star-directive.js"></script>
+        <!--
+        <script src="app-js/directives/some-directives.js"></script>
+        <script src="app-js/services/some-services.js"></script>
+        -->
+        
+    </body>
+</html>
