@@ -1,0 +1,45 @@
+<div class="container-fluid sidebar-fill no-paddings-horizontal" >
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h4>{{pageTitle}}</h4>
+  <hr/>
+
+  <form class="form-horizontal" name="albumForm">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="albumName">Name:</label>
+        <div class="controls">
+          <input id="albumName" class="span4" size="16" type="text" name="name" placeholder="Album's Name"
+          ng-model="album.name" required></input>
+          <span ng-show="albumForm.name.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label" for="albumYear">Year:</label>
+        <div class="controls">
+          <input id="albumYear" class="span4" size="16" type="number" name="year" placeholder="Album's Year"
+          ng-model="album.year" required></input>
+          <span ng-show="albumForm.year.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="albumArtist">Artist:</label>
+        <div class="controls">
+          <select id="albumArtist" ng-model="album.artist.name" ng-options="artist.name for artist in artistProvider"></select>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+
+  <div class="modal-footer">
+    <button ng-click="cancel()" class="btn">Cancel</button>
+    <button ng-click="save()" ng-disabled="albumForm.$invalid" class="btn btn-primary">Save</button>
+  </div>
+
+</div>

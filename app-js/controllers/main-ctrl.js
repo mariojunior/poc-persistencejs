@@ -1,4 +1,4 @@
-function MainCtrl($scope, $rootScope, $location) {
+function MainCtrl($scope, $rootScope, $location, PersistenceJSEngine) {
     
 	$rootScope.user = {};
 	$rootScope.logged = false;
@@ -11,6 +11,11 @@ function MainCtrl($scope, $rootScope, $location) {
 
 	$scope.amIatRoute = function(path) {
 		return $location.$$path.indexOf(path) > -1;
+	}
+
+
+	$scope.resetDatabase = function() {
+		PersistenceJSEngine.rebuildDB();
 	}
 
 };

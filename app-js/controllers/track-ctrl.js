@@ -1,4 +1,4 @@
-function TrackCtrl($scope, $location, $routeParams, TrackRepository) {
+function TrackCtrl($scope, $location, $routeParams, PersistenceJSEngine) {
     
     $scope.track = {};
 
@@ -25,16 +25,19 @@ function TrackCtrl($scope, $location, $routeParams, TrackRepository) {
 
 // --- private functions -------
 	function list() {
-		TrackRepository.query(null, function(result) {
+		// TrackRepository.query(null, function(result) {
+  //   		$scope.dataProvider = result;
+  //   	});
+		PersistenceJSEngine.fetchAllTrack(function(result) {
     		$scope.dataProvider = result;
     	});
     }
 
     function get(trackId) {
-    	TrackRepository.get({id: trackId}, function(result) {
-    		$scope.track = result;
-    		$scope.pageTitle = "Editing Track " + result.name;
-    	});
+    	// TrackRepository.get({id: trackId}, function(result) {
+    	// 	$scope.track = result;
+    	// 	$scope.pageTitle = "Editing Track " + result.name;
+    	// });
     }
 
 

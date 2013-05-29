@@ -1,6 +1,11 @@
-function AlbumCtrl($scope, $location, $routeParams, AlbumRepository) {
+function AlbumCtrl($scope, $location, $routeParams, PersistenceJSEngine) {
     
     $scope.album = {};
+
+    PersistenceJSEngine.fetchAllArtist(function(result) {
+        $scope.artistProvider = result;
+        $scope.$apply();
+    });
 
     //URL watcher to form edition/creation list all objects, according url parameter
     $scope.$watch(function () { return $location.path() },
@@ -9,7 +14,7 @@ function AlbumCtrl($scope, $location, $routeParams, AlbumRepository) {
 		        if ($location.$$url.indexOf("new") > -1) {
 		            $scope.album = {};
 		        } else if ($location.$$url.indexOf("edit") > -1) {
-		            get($routeParams.albumId);
+		            getAlbum($routeParams.albumId);
 		        } else {
 		            list();
 		        }
@@ -19,21 +24,42 @@ function AlbumCtrl($scope, $location, $routeParams, AlbumRepository) {
 
 // --- scoped functions -------
 	$scope.backToIndex = function() {
-		$location.path("/offline");
+		$location.path("/offline/albums/");
+        // $scope.$apply();
 	}
 
-
-// --- private functions -------
-	function list() {
-		AlbumRepository.query(null, function(result) {
-    		$scope.dataProvider = result;
+    $scope.save = function() {
+    	PersistenceJSEngine.saveAlbum($scope.album, function(result) {
+    		$scope.backToIndex();
     	});
     }
 
-    function get(albumId) {
-    	AlbumRepository.get({id: albumId}, function(result) {
+    $scope.cancel = function() {
+        $scope.backToIndex();
+    }
+
+    $scope.remove = function(obj) {
+        PersistenceJSEngine.removeAlbum(obj.id, function(result) {
+            setTimeout(function(){
+                $scope.$apply();
+                $scope.backToIndex();
+            },300);
+        });
+    }
+
+// --- private functions -------
+	function list() {
+		PersistenceJSEngine.fetchAllAlbums(function(result) {
+    		$scope.dataProvider = result;
+    		$scope.$apply();
+    	});
+    }
+    
+    function getAlbum(albumId) {
+    	PersistenceJSEngine.getAlbum(albumId, function(result) {
     		$scope.album = result;
-    		$scope.pageTitle = "Editing Album " + result.name;
+    		$scope.pageTitle = "Editing Album " + (!result) ? '' : result.name;
+    		$scope.$apply();
     	});
     }
 

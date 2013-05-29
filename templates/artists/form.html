@@ -1,0 +1,29 @@
+<div class="container-fluid sidebar-fill no-paddings-horizontal" >
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <h4>{{pageTitle}}</h4>
+  <hr/>
+
+  <form class="form-horizontal" name="artistForm">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="inputName">Name:</label>
+        <div class="controls">
+          <input id="inputName" class="span4" size="16" type="text" name="name" placeholder="Artist Name"
+          ng-model="artist.name" required></input>
+          <span ng-show="artistForm.name.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="modal-footer">
+    <button ng-click="cancel()" class="btn">Cancel</button>
+    <button ng-click="save()" ng-disabled="artistForm.$invalid" class="btn btn-primary">Save</button>
+    <!-- <button ng-click="remove(album)" ng-show="artist.id" class="btn btn-danger">Remove</button> -->
+  </div>
+
+</div>

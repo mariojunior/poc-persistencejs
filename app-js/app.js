@@ -2,10 +2,11 @@ var APP_NAME = "poc-persistenceJS";
 
 var MODULES = [
 				//declare here your services/directives components
-                        "album-repository",
-                        "artist-repository",
-				"track-repository",
-                        "ui.component"
+    //                     "album-repository",
+    //                     "artist-repository",
+				// "track-repository",
+                        "ui.component",
+                        "persistencejs-engine"
 			  ]; 
 
 var TEMPLATE_DIR = "templates/";
@@ -34,3 +35,5 @@ var pocPersistenceJS = angular.module(APP_NAME, MODULES)
             .when('/offline/tracks/new', { controller: TrackCtrl, templateUrl: TEMPLATE_DIR + 'tracks/form.html' })
             .when('/offline/tracks/:trackId/edit', { controller: TrackCtrl, templateUrl: TEMPLATE_DIR + 'tracks/form.html' })
 	});
+
+// pocPersistenceJS.$inject = "PersistenceJSEngine";

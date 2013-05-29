@@ -1,4 +1,4 @@
-function ArtistCtrl($scope, $location, $routeParams, ArtistRepository) {
+function ArtistCtrl($scope, $location, $routeParams, PersistenceJSEngine) {
     
     $scope.artist = {};
 
@@ -9,7 +9,7 @@ function ArtistCtrl($scope, $location, $routeParams, ArtistRepository) {
 		        if ($location.$$url.indexOf("new") > -1) {
 		            $scope.artist = {};
 		        } else if ($location.$$url.indexOf("edit") > -1) {
-		            get($routeParams.artistId);
+		            getArtist($routeParams.artistId);
 		        } else {
 		            list();
 		        }
@@ -19,21 +19,42 @@ function ArtistCtrl($scope, $location, $routeParams, ArtistRepository) {
 
 // --- scoped functions -------
 	$scope.backToIndex = function() {
-		$location.path("/offline");
+		$location.path("/offline/artists/");
+	}
+
+	$scope.save = function() {
+		PersistenceJSEngine.saveArtist($scope.artist, function(result) {
+    		$scope.backToIndex();
+    	});
+	}
+
+	$scope.cancel = function() {
+		$scope.backToIndex();
+	}
+
+	$scope.remove = function(obj) {
+		PersistenceJSEngine.removeArtist(obj.id, function(result) {
+			setTimeout(function(){
+                $scope.$apply();
+                $scope.backToIndex();
+            },300);
+    	});
 	}
 
 
 // --- private functions -------
 	function list() {
-		ArtistRepository.query(null, function(result) {
+		PersistenceJSEngine.fetchAllArtist(function(result) {
     		$scope.dataProvider = result;
+    		$scope.$apply();
     	});
     }
 
-    function get(artistId) {
-    	ArtistRepository.get({id: artistId}, function(result) {
+    function getArtist(artistId) {
+    	PersistenceJSEngine.getArtist(artistId, function(result) {
     		$scope.artist = result;
-    		$scope.pageTitle = "Editing Artist " + result.name;
+    		$scope.pageTitle = "Editing Artist " + (!result) ? '' : result.name;
+    		$scope.$apply();
     	});
     }
 

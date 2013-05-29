@@ -1,0 +1,75 @@
+<div modal="showModal" class="fade">   
+  <div class="modal-header"><h4>{{TITLE_FORM}}</h4></div>
+  <div class="modal-body">
+    <form class="form-horizontal" name="myForm">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="inputName">Nome:</label>
+          <div class="controls">
+            <input id="inputName" class="span8" size="16" type="text" 
+                   name="name" ng-model="avaliacao.Nome" required />
+                   <span ng-show="myForm.name.$error.required" class="help-inline">Obrigatório</span>
+          </div>
+        </div>
+        <div class="control-group ">
+          <label class="control-label" for="inputStartDate">Data Criação:</label>
+          <div class="controls">
+            <input class="span4" ui-date ui-date-format="'dd/mm/yy'" id="inputStartDate" 
+              type="text" name="startDate" ng-model="avaliacao.DataCriacao"></input>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="inputEndDate">Data Término:</label>
+          <div class="controls">
+            <input class="span4" ui-date ui-date-format="'dd/mm/yy'" id="inputEndDate" 
+              type="text" name="endDate" ng-model="avaliacao.DataTermino" />
+          </div>
+        </div>
+
+        <div id="gerenciaControl" class="control-group">
+          <label class="control-label" for="inputGerencia">Gerência:</label>
+          <div class="controls" id="gerencia-label" ng-hide="showGerenciaForm == true">
+            <span class="input-large uneditable-input">{{avaliacao.Gerencia.Nome}}</span> 
+            <!-- ::Nenhuma Gerência Indicada:: -->
+            <a class="btn btn-small btn-primary" ng-click="changedShowGerenciaForm()">
+              <i class="icon-edit icon-white"></i>
+            </a>
+            <a class="btn btn-small btn-danger" ng-click="avaliacao.Gerencia=null" ng-show="avaliacao.Gerencia">
+              <i class="icon-remove icon-white"></i>
+            </a>
+          </div>
+          <div id="gerencia-form" ng-show="showGerenciaForm == true">
+            <div class="control-group">
+              <div class="controls">
+                <input class="span3" size="16" type="text" name="gerencia" ng-model="searchGerencia"></input>
+                <a class="btn btn-small" ng-click="filterGerencia(searchGerencia)">
+                    <i class="icon-search"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="controls">
+                <select ng-model="avaliacao.Gerencia" ng-options="gerencia.Nome for gerencia in gerencias"></select>
+                <a class="btn btn-mini btn-success" ng-click="changedShowGerenciaForm()">
+                    <i class="icon-ok icon-white"></i>
+                </a>
+                <a class="btn btn-mini btn-warning" ng-click="changedShowGerenciaForm()">
+                    <i class="icon-remove icon-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a ng-click="close()" class="btn">Cancel</a>
+    <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid || !hasPermission(permissions.AVALIACAO_SALVAR)"
+            class="btn btn-primary">Save</button>
+    <button ng-click="remove()" ng-disabled="!hasPermission(permissions.AVALIACAO_EXCLUIR)"
+            ng-show="avaliacao.Codigo" class="btn btn-danger">Delete</button>
+  </div>
+</div>

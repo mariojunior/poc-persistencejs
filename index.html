@@ -22,7 +22,12 @@
                             <i class="icon-user icon-large"></i>
                             <span>Welcome <strong>{{user.email}}</strong>!</span>
                             <br />
-                            <span class="pull-right"><a href="#" ng-click="logoutIndex()">Sair</a></span>
+                            <span class="pull-right">
+                                <a href="#" ng-click="logoutIndex()">Logoff</a>
+                                <!-- <a class="btn btn-small btn-primary" ng-click="resetDatabase()">
+                                  <i class="icon-star-half-full"></i>&nbsp;&nbsp;Reset
+                                </a> -->
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -36,9 +41,9 @@
                             <li ng-class="{'active': amIatRoute('/albums')}">
                                 <a href="#/offline/albums">Albums</a>
                             </li>
-                            <li ng-class="{'active': amIatRoute('/tracks')}">
+                            <!-- <li ng-class="{'active': amIatRoute('/tracks')}">
                                 <a href="#/offline/tracks">Tracks</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -95,11 +100,13 @@
         <script src="app-js/controllers/artist-ctrl.js"></script>
         <script src="app-js/controllers/track-ctrl.js"></script>
 
-        <script src="app-js/services/mocks/album-repository.js"></script>
+        <!-- <script src="app-js/services/mocks/album-repository.js"></script>
         <script src="app-js/services/mocks/artist-repository.js"></script>
-        <script src="app-js/services/mocks/track-repository.js"></script>
+        <script src="app-js/services/mocks/track-repository.js"></script> -->
 
         <script src="app-js/directives/rating-star-directive.js"></script>
+
+        <script src="app-js/services/persistencejs-init.js"></script>
         
 
         <script type="text/javascript">
