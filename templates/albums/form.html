@@ -30,7 +30,9 @@
       <div class="control-group">
         <label class="control-label" for="albumArtist">Artist:</label>
         <div class="controls">
-          <select id="albumArtist" ng-model="album.artist.name" ng-options="artist.name for artist in artistProvider"></select>
+          <select id="albumArtist" ng-model="album.artist.name" 
+          ng-options="artist.id as artist.name for artist in artistProvider"></select>
+          <!-- ng-options="artist.name for artist in artistProvider"></select> -->
         </div>
       </div>
 

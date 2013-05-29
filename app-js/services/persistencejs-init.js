@@ -41,17 +41,6 @@ angular.module('persistencejs-engine',[])
 
 		var engine = function(){};
 
-		engine.prototype.rebuildDB = function() {
-			var action = confirm("All data will be erased. Are you sure?", "Hey dude, are you crazy?");
-			if (action) {
-				console.log("Is there any way to do it using persistencejs sync?");
-			}
-		}
-
-		engine.prototype.getDao = function() {
-			return persistence;
-		}
-
 		// #################### Methods for Album DAO ####################
 		engine.prototype.saveAlbum = function(obj, cb) {
 			var result; 
@@ -84,7 +73,8 @@ angular.module('persistencejs-engine',[])
 				var result = {};
 				item._data.id = item.id;
 				var artist = item.artist;
-				item._data.artist = artist._data;
+				// item._data.artist = (artist === null) ? null : artist._data;
+				item._data.artist = (!artist) ? null : artist._data;
 
 				result = item._data;
 				return cb(result);
