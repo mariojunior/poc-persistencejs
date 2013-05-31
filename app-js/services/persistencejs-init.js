@@ -1,7 +1,7 @@
 angular.module('persistencejs-engine',[])
 	.factory('PersistenceJSEngineProvider', function(){
 
-		var SIZE = 100*1024*1024; //100MB
+		var SIZE = 50*1024*1024; //100MB
 		persistence.store.websql.config(persistence, 'music-library', 'A Personal Music Library database', SIZE);
 		
 		//defining our entities
